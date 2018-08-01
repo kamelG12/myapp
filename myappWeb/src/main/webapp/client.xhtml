@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/templates/common.xhtml">
+	<ui:define name="title">client</ui:define>
+	<ui:define name="content">
+	  numClient: <h:outputText value="#{clientBean.client.numClient}"  /> <br/>
+	  prenom: <h:outputText value="#{clientBean.client.prenom}"  /> <br/>
+      nom: <h:outputText value="#{clientBean.client.nom}"  /> <br/>
+      email: <h:outputText value="#{clientBean.client.email}"  /> <br/>
+	  telephone: <h:outputText value="#{clientBean.client.telephone}"  /> <br/>
+      adresse: <h:outputText value="#{clientBean.client.adresse}"  /> 
+      <hr/>
+      
+      <!--  h:outputLink fabrique indirectement a href="..." -->
+	  <h:outputLink value="comptes.jsf?numClient=#{clientBean.client.numClient}" >
+			liste des comptes du client
+		</h:outputLink>
+	</ui:define>
+</ui:composition>
+</html> 

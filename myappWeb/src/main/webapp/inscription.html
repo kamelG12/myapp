@@ -1,0 +1,47 @@
+<html>
+<head>
+    <title>inscription</title>
+    <script src="./resources/js/jquery-3.3.1.min.js" ></script>
+    <!-- <script src="./js/s3_via_jquery.js" ></script> -->
+	<script src="./js/s3.js" ></script> 
+	<script src="./js/my-nav.js" ></script>
+	<script src="./js/handlebars.min-v4.0.11.js" ></script>
+	<script id="template-dans-tr" type="text/x-handlebars-template">
+      <td>{{numClient}}</td> <td>{{prenom}}</td> <td>{{nom}}</td> 
+      <td>{{email}}</td> <td>{{telephone}}</td> <td>{{adresse}}</td>
+	</script>
+</head>
+<body onload="initComportementJs()">
+    <input type="button" id="btnPartieA"  value="sous_partie_a"></input> 
+    <input type="button" id="btnPartieB"  value="sous_partie_b"></input> <br/>
+   Sous page switchable (souvent entre entete et pied de page fixes)<br/>
+   <!-- switch avec $("#divContent").load("./sous_page_xx_ou_yy.html") de jquery -->
+   <div id="divContent">  
+   </div>
+   <hr/>
+   
+   <h1>inscription</h1>
+   prenom: <input id="prenom" type="text" /> <br/>
+   nom: <input id="nom" type="text" /> <br/>
+   adresse: <input id="adresse" type="text" /> <br/>
+   telephone: <input id="telephone" type="text" /> <br/>
+   email: <input id="email" type="text" /> <br/>
+   
+   <input type="button" id="btnEnregistrer"  value="enregistrer"></input>
+   
+   res = <span  id="spanRes"></span> 
+   <hr/>
+   
+   <input type="button" id="btnListeInscriptions"  value="liste inscriptions"></input>
+   <span  id="spanTableau"></span> 
+   <table id="idTable" border="1">
+      <thead>
+           <tr><th>numClient</th><th>prenom</th><th>nom</th><th>email</th><th>telephone</th><th>adresse</th></tr>
+      </thead>
+      <tbody>
+           <!-- <tr><td>jean</td><td>Bon</td><td>...</td></tr> -->
+      </tbody>
+   </table> 
+   
+</body>
+</html>

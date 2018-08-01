@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit  transaction-type="JTA"  name="myappCore">
+	   <!-- transaction-type="RESOURCE_LOCAL" sans EJB ou bie "JTA" avec ejb -->
+	
+	  <!-- en version JPA dans projet EJB , la connexion est déléguée à un dataSource de JBOSS
+	       configuré dans wildfly /standalone/configuration/standalone.xml  -->
+	 <!--  <jta-data-source>java:jboss/datasources/BankDS</jta-data-source> -->
+	  <jta-data-source>java:jboss/datasources/BankDsMysql</jta-data-source>
+	
+	   <!-- provider = technologie Hibernate ou OpenJPA qui fourni le code concret de JPA -->
+	  <!--  <provider>org.hibernate.ejb.HibernatePersistence</provider>   pour Hb 4 -->
+       <!-- <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> --> <!-- Hb 5.3 -->
+       <!-- pour une appli JEE/EJB , c'est le serveur qui impose le provider -->
+	   
+	     <class>fr.afcepf.ai103.data.Client</class>
+	     <class>fr.afcepf.ai103.data.Compte</class>
+	     <class>fr.afcepf.ai103.data.Operation</class>
+	 
+	 <properties>
+	     <!--  la config database est soit ici soit dans standalone.xml -->
+	     <!--  
+	     <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+         <property name="javax.persistence.jdbc.user" value="sa"/>
+         <property name="javax.persistence.jdbc.password" value=""/>
+		 <property name="javax.persistence.jdbc.url" value="jdbc:h2:~/bank_db"/>
+		 -->
+		 
+		 <!-- un dialecte par type de base de données pour spécialiser le SQL à générer -->
+		<!--  <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/> -->
+		
+		<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+		 <!-- 
+             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/bank_db" />         
+             <property name="javax.persistence.jdbc.password" value="root" />        
+             <property name="javax.persistence.jdbc.user" value="root" /> 
+		-->
+		
+	 
+	 
+	    <!-- pour demander à hibernate de automatiquement créer les tables
+	         (CREATE TABLE ...) suivant les structures des classes java  -->
+		<property name="hibernate.hbm2ddl.auto" value="create"/> 
+		<!--  lorsque hibernate.hbm2ddl.auto vaut create le fichier import.sql (à placer
+		     à la racine du classpath : src/main/resources ou ... ) 
+		     est automatiquement déclenché au démarrage de l'application 
+		     pour des insert into / jeux de données pour les tests -->
+		
+		
+		
+		<property name="hibernate.show_sql" value="true"/>
+     </properties>
+	 
+	</persistence-unit>
+</persistence>

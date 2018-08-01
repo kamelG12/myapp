@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+   <ui:insert name="pageMetaData">
+    <!-- pour f:metadata -->   
+   </ui:insert>
+	  
+<h:head>
+    <!-- depuis JSF2 il est possible d'utiliser  
+         h:outputScript , h:outputStylesheet , ...
+         pour demander à charger des fichiers .js ou .css avec des 
+         chemins relatifs exprimés en relatif depuis de sous répertoire "resources"
+         de l'archive web (src/main/webapp ou ...) 
+         
+         Ceci ameliore la compatibité jquery , bootstrap-css , primefaces .
+         -->
+
+    <!--  <script src="resources/js/jquery-3.3.1.min.js"></script> -->
+    <!--  <script src="resources/js/bootstrap.bundle.min.js"></script> -->
+    <h:outputScript name="js/jquery-3.3.1.min.js" target="head" />
+	<h:outputScript name="js/bootstrap.bundle.min.js" target="body" />
+    <!--  <link rel="stylesheet" href="./css/bootstrap.min.css" /> -->
+	<!--  <link rel="stylesheet" href="./css/styles.css" /> -->
+	<h:outputStylesheet name="css/bootstrap.min.css" />
+	<h:outputStylesheet name="css/style.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- for responsive bootstrap on mobile device -->
+  <title><ui:insert name="title">Default title</ui:insert></title>
+</h:head>
+
+<h:body>
+
+	<ui:debug hotkey="x" rendered="#{initParam['javax.faces.FACELETS_DEVELOPMENT']}"/>
+	
+	<div id="header">
+	    <ui:insert name="header">
+	    	<ui:include src="header.xhtml"/>
+	    	<br/>
+	    </ui:insert>
+	</div>
+	
+	
+	<div id="content" class="container-fluid">
+	  <ui:insert name="content">
+	    	specific content for each page
+	  </ui:insert>
+	</div>
+	
+	<div id="footer">
+	  <ui:insert name="footer">
+	     <ui:include src="footer.xhtml"/>
+	  </ui:insert>
+	</div>
+
+</h:body>
+</f:view>
+</html>

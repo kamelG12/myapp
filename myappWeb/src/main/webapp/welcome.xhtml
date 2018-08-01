@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/templates/common.xhtml">
+	<ui:define name="title">welcome</ui:define>
+	
+	<ui:define name="content">
+	 <h1>WELCOME !!!</h1>
+     <!--  NB: url en .jsf plutôt que .jsp pour que la requête HTTP
+           soit d'abord analysée par FacesServlet 
+           avant d'aller vers la page .jsp ou .xhtml--> 
+     <a href="racine.jsf">calcul racine carrée</a><br/>
+     <a href="login.jsf">login client</a><br/>
+	</ui:define>
+	
+</ui:composition>
+</html>
